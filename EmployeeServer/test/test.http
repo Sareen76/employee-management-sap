@@ -1,0 +1,85 @@
+### -----------------------------------------
+### 1) Get all Employees (OData V4)
+### -----------------------------------------
+GET http://localhost:4004/employee/Employees
+Accept: application/json
+
+
+### -----------------------------------------
+### 2) Get all Employees (OData V2)
+### -----------------------------------------
+GET http://localhost:4004/v2/employee/Employees
+Accept: application/json
+
+
+### -----------------------------------------
+### 3) Get all Departments (V4)
+### -----------------------------------------
+GET http://localhost:4004/employee/Departments
+Accept: application/json
+
+
+### -----------------------------------------
+### 4) Get all Departments (V2)
+### -----------------------------------------
+GET http://localhost:4004/v2/employee/Departments
+Accept: application/json
+
+
+### -----------------------------------------
+### 5) Get single Employee by ID (V4)
+### Replace {{id}} with a real UUID
+### -----------------------------------------
+GET http://localhost:4004/employee/Employees({{id}})
+Accept: application/json
+
+
+### -----------------------------------------
+### 6) Create Employee (V4)
+### -----------------------------------------
+POST http://localhost:4004/employee/Employees
+Content-Type: application/json
+
+{
+  "FirstName": "Sareen",
+  "LastName": "Garnaik",
+  "Email": "sareen@example.com",
+  "JobTitle": "Software Engineer",
+  "Status": "Active",
+  "HireDate": "2024-02-20",
+  "Department_ID": "a1111111-2222-3333-4444-555555555555"
+}
+
+
+### -----------------------------------------
+### 7) Update Employee (V4)
+### Replace {{id}}
+### -----------------------------------------
+PATCH http://localhost:4004/employee/Employees({{id}})
+Content-Type: application/json
+
+{
+  "JobTitle": "Senior Engineer",
+  "Status": "OnLeave"
+}
+
+
+### -----------------------------------------
+### 8) Delete Employee (V4)
+### Replace {{id}}
+### -----------------------------------------
+
+
+@id = b229b4c5-bfa7-45b9-bee5-e61457de8025
+
+### Delete employee by ID (V4)
+DELETE http://localhost:4004/employee/Employees({{id}})
+Accept: application/json
+
+
+
+### -----------------------------------------
+### 9) Expand Department inside Employees (V4)
+### -----------------------------------------
+GET http://localhost:4004/employee/Employees?$expand=Department
+Accept: application/json

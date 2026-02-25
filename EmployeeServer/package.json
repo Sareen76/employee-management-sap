@@ -1,0 +1,40 @@
+{
+  "name": "mycapproject",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "github:cap-js-community/odata-v2-adapter",
+    "@sap/cds": "^9",
+    "express": "^4",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "cds-plugin-ui5": "^0.13.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-employee-ui": "cds watch --open com.capgemini.employeeui/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-employee-fs": "cds watch --open com.capgemini.employeefs/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "employee.db"
+        },
+        "model": [
+          "db",
+          "srv"
+        ]
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/employee-ui"
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "_version": "1.82.0",
+  "sap.app": {
+    "id": "com.capgemini.employeefs",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.3",
+      "toolsId": "c9d02425-e9db-4141-a1a6-f76707ff5c99"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/employee/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.01"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.145.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.capgemini.employeefs.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.capgemini.employeefs.view",
+        "async": true,
+        "viewPath": "com.capgemini.employeefs.view"
+      },
+      "routes": [
+        {
+          "name": "RouteDashboard",
+          "pattern": "",
+          "target": [
+            "TargetDashboard"
+          ]
+        },
+        {
+          "name": "RouteEmployee",
+          "pattern": "RouteEmployee",
+          "target": [
+            "TargetEmployee"
+          ]
+        },
+        {
+          "name": "RouteEmployeeDetails",
+          "pattern": "RouteEmployeeDetails({ID})",
+          "target": [
+            "TargetEmployeeDetails"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetDashboard": {
+          "id": "Dashboard",
+          "name": "Dashboard"
+        },
+        "TargetEmployee": {
+          "id": "Employee",
+          "name": "Employee"
+        },
+        "TargetEmployeeDetails": {
+          "id": "EmployeeDetails",
+          "name": "EmployeeDetails"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.capgemini.employeefs.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

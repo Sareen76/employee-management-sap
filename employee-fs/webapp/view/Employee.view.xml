@@ -1,0 +1,45 @@
+<mvc:View controllerName="com.capgemini.employeefs.controller.Employee"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <subHeader>
+
+      <Toolbar>
+        <Title text="Employees"/>
+        <ToolbarSpacer/>
+        <SearchField width="20rem" liveChange=".onSearch" placeholder="Search by name or title"/>
+      </Toolbar>
+
+    </subHeader>
+    <content>
+      
+<Table id="empTable"
+       items="{path: '/Employees'}"
+       mode="SingleSelectMaster"
+       itemPress=".onItemPress"
+       includeItemInSelection="false"
+       growing="true"
+       growingScrollToLoad="true">
+
+        <columns>
+          <Column><Text text="First Name"/></Column>
+          <Column><Text text="Last Name"/></Column>
+          <Column><Text text="Email"/></Column>
+          <Column><Text text="Job Title"/></Column>
+          <Column><Text text="Status"/></Column>
+          <Column><Text text="Hire Date"/></Column>
+        </columns>
+        <items>
+          <ColumnListItem type="Navigation">
+            <Text text="{FirstName}"/>
+            <Text text="{LastName}"/>
+            <Text text="{Email}"/>
+            <Text text="{JobTitle}"/>
+            <ObjectStatus text="{Status}" state="{= ${Status} === 'Active' ? 'Success' : 'Warning'}"/>
+            <Text text="{path: 'HireDate', type: 'sap.ui.model.odata.type.Date'}"/>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+    </Page>
+</mvc:View>

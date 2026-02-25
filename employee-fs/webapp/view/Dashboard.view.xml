@@ -1,0 +1,33 @@
+<mvc:View
+    controllerName="com.capgemini.employeefs.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+  <Page id="Dashboard" title="{i18n>dashboard}">
+    <subHeader>
+      <Toolbar>
+        <Title text="Dashboard" />
+        <ToolbarSpacer />
+
+        <!-- Backend Toggle to Toggle between SEGW service and CAP Service (A Dropdown section) -->
+        <Select width="16rem" selectedKey="{ui>/backend}" change=".onBackendChange">
+          <core:Item key="CAP" text="CAP (localhost:4004)" />
+          <core:Item key="SEGW" text="SEGW (SAP Gateway)" />
+        </Select>
+      </Toolbar>
+    </subHeader>
+
+    <content>
+      <VBox class="sapUiSmallMargin">
+        <Text text="Quick Actions" design="Bold" class="sapUiSmallMarginBottom" />
+        <Button
+          text="Go to Employees"
+          type="Emphasized"
+          icon="sap-icon://employee"
+          press=".onOpenEmployees" />
+      </VBox>
+    </content>
+  </Page>
+
+</mvc:View>
