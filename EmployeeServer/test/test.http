@@ -40,15 +40,17 @@ Accept: application/json
 POST http://localhost:4004/employee/Employees
 Content-Type: application/json
 
+
 {
-  "FirstName": "Sareen",
-  "LastName": "Garnaik",
-  "Email": "sareen@example.com",
-  "JobTitle": "Software Engineer",
+  "FirstName": "Aarav",
+  "LastName": "Menon",
+  "Email": "aarav.menon@example.com",
+  "JobTitle": "Business Analyst",
   "Status": "Active",
-  "HireDate": "2024-02-20",
-  "Department_ID": "a1111111-2222-3333-4444-555555555555"
+  "HireDate": "2025-03-15",
+  "Department_ID": "b2222222-3333-4444-5555-666666666666"
 }
+
 
 
 ### -----------------------------------------

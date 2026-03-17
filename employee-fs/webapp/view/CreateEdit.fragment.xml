@@ -1,0 +1,63 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <Dialog
+        id="EmployeeDialog"
+        title="{vm>/dialogTitle}"
+        stretchOnPhone="true"
+    >
+        <VBox class="sapUiSmallMargin">
+            <Label
+                text="First Name"
+                required="true"
+            />
+            <Input value="{dlg>/FirstName}" />
+            <Label
+                text="Last Name"
+                required="true"
+            />
+            <Input value="{dlg>/LastName}" />
+            <Label
+                text="Email"
+                required="true"
+            />
+            <Input value="{dlg>/Email}" />
+            <Label text="Job Title" />
+            <Input value="{dlg>/JobTitle}" />
+            <Label text="Satus"/>
+            <Input value="{dlg>/Status}" />
+            <Label text="Hire Date"/>
+            <Input value="{dlg>/HireDate}" />
+            
+            <Label text="Department"/>
+            <Select
+                selectedKey="{dlg>/Department_ID}"
+                items="{
+                    path: '/Departments'
+                }"
+            >
+                <core:Item
+                    xmlns:core="sap.ui.core"
+                    key="{ID}"
+                    text="{Name}"
+                />
+            </Select>
+
+        </VBox>
+        <beginButton>
+            <Button
+                text="{= ${vm>/mode} === 'CREATE' ? 'Create' : 'Save'}"
+                type="Default"
+                press=".onDialogSave"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                text="Cancel"
+                type="Reject"
+                press=".onDialogCancel"
+            />
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>

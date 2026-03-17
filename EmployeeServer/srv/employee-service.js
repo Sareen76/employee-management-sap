@@ -12,6 +12,9 @@ module.exports = cds.service.impl(async function () {
 
     })
 
+    this.before('CREATE', 'Employees', (req) => {
+        req.data.CreatedAt = new Date().toISOString();
+    })
     this.before('UPDATE', 'Employees', (req)=> {
         req.data.ModeifiedAt = new Date().toISOString();
     })

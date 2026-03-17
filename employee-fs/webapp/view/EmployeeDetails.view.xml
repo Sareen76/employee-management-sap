@@ -1,5 +1,4 @@
-<mvc:View
-  controllerName="com.capgemini.employeefs.controller.EmployeeDetails"
+<mvc:View controllerName="com.capgemini.employeefs.controller.EmployeeDetails"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m"
   xmlns:f="sap.ui.layout.form">
@@ -7,20 +6,40 @@
   <Page id="EmployeeDetails" title="Employee Details" showNavButton="true" navButtonPress=".onNavBack">
     <content>
       <f:SimpleForm editable="false" layout="ResponsiveGridLayout">
-        <Label text="First Name"/><Text text="{FirstName}"/>
-        <Label text="Last Name"/><Text text="{LastName}"/>
-        <Label text="Email"/><Text text="{Email}"/>
-        <Label text="Job Title"/><Text text="{JobTitle}"/>
+        <Label text="First Name"/>
+        <Text text="{FirstName}"/>
+        <Label text="Last Name"/>
+        <Text text="{LastName}"/>
+        <Label text="Email"/>
+        <Text text="{Email}"/>
+        <Label text="Job Title"/>
+        <Text text="{JobTitle}"/>
         <Label text="Status"/>
         <ObjectStatus text="{Status}" state="{= ${Status} === 'Active' ? 'Success' : 'Warning'}"/>
         <Label text="Hire Date"/>
         <Text text="{path: 'HireDate', type: 'sap.ui.model.odata.type.Date'}"/>
-        <Label text="Department"/><Text text="{Department/Name}"/>
+        <Label text="Department"/>
+        <Text text="{Department/Name}"/>
         <Label text="Created At"/>
-        <Text text="{path:'CreatedAt', type:'sap.ui.model.odata.type.DateTimeOffset'}"/>
+        
+<Text
+  text="{
+    path:'CreatedAt'
+  }"
+/>
+
+
         <Label text="Modified At"/>
-        <Text text="{path:'ModifiedAt', type:'sap.ui.model.odata.type.DateTimeOffset'}"/>
+<Text
+  text="{
+    path:'ModifiedAt'
+  }"
+/>
       </f:SimpleForm>
+      <HBox id="CrudBox" justifyContent="Center" class="sapUiSmallMarginTop">
+        <Button text="Update" type="Attention" icon="sap-icon://edit" press=".onUpdate" class="sapUiTinyMarginEnd"></Button>
+        <Button text="Delete" type="Reject" icon="sap-icon://delete" press=".onDelete" class="sapUiTinyMarginEnd"></Button>
+      </HBox>
     </content>
   </Page>
 </mvc:View>
