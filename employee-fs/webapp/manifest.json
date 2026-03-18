@@ -21,7 +21,10 @@
         "type": "OData",
         "settings": {
           "annotations": [],
-          "odataVersion": "4.01"
+          "odataVersion": "4.01",
+"synchronizationMode": "None",
+      "updateGroupId": "$auto"
+
         }
       }
     }

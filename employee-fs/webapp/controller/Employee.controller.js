@@ -25,6 +25,7 @@ sap.ui.define(
         },
 
         _onRouteMatched: function (oEvent) {
+          this.byId("empTable").getBinding("items").refresh();
           MessageToast.show("RouteEmployee matched");
         },
 

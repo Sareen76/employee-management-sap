@@ -42,9 +42,9 @@ Content-Type: application/json
 
 
 {
-  "FirstName": "Aarav",
-  "LastName": "Menon",
-  "Email": "aarav.menon@example.com",
+  "FirstName": "Madhuri",
+  "LastName": "Dixit",
+  "Email": "madhuri.dixit@example.com",
   "JobTitle": "Business Analyst",
   "Status": "Active",
   "HireDate": "2025-03-15",
@@ -52,17 +52,18 @@ Content-Type: application/json
 }
 
 
-
 ### -----------------------------------------
 ### 7) Update Employee (V4)
 ### Replace {{id}}
 ### -----------------------------------------
+@id = b7193a07-6366-4766-b447-4866c11fe9f9
+
 PATCH http://localhost:4004/employee/Employees({{id}})
 Content-Type: application/json
 
 {
   "JobTitle": "Senior Engineer",
-  "Status": "OnLeave"
+  "Status": "Active"
 }
 
 
@@ -72,7 +73,6 @@ Content-Type: application/json
 ### -----------------------------------------
 
 
-@id = b229b4c5-bfa7-45b9-bee5-e61457de8025
 
 ### Delete employee by ID (V4)
 DELETE http://localhost:4004/employee/Employees({{id}})
