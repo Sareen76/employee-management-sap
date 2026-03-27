@@ -31,9 +31,7 @@
 
         <Label text="Modified At"/>
 <Text
-  text="{
-    path:'ModifiedAt'
-  }"
+  text="{= ${ModifiedAt} ? ${ModifiedAt} : 'Not yet Modified'}"
 />
       </f:SimpleForm>
       <HBox id="CrudBox" justifyContent="Center" class="sapUiSmallMarginTop">

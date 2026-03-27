@@ -28,7 +28,78 @@ sap.ui.define(
           this.byId("empTable").getBinding("items").refresh();
           MessageToast.show("RouteEmployee matched");
         },
+onSearch : function(oEvent){
+  console.log(oEvent);
+},
+onSortAsc : function(){
+  this._applySort("FirstName", true);
+},
+onSortDesc : function(){
+  this._applySort("FirstName", false);
+},
 
+_applySort: function (path, ascending) {
+    const oTable = this.byId("empTable");
+    const oBinding = oTable.getBinding("items");
+    const oSorter = new sap.ui.model.Sorter(path, !ascending);
+    oBinding.sort(oSorter);
+},
+
+onFilterDialog: function () {
+  if (!this._filterDialog) {
+    this._filterDialog = new sap.m.Dialog({
+      title: 'Filter',
+      content: [
+        new sap.m.Input("filterName", {
+          placeholder: "Filter by First Name"
+        }),
+        new sap.m.Input("filterJobTitle", {
+          placeholder: "Filter by Job Title"
+        })
+      ],
+      beginButton: new sap.m.Button({
+        text: "Apply",
+        press: () => this._applyFilter()
+      }),
+      endButton: new sap.m.Button({
+        text: "Cancel",
+        press: () => this._filterDialog.close()
+      })
+    });
+  }
+  this._filterDialog.open();
+},
+
+_applyFilter: function () {
+  const aFilters = [];  
+
+  const sName = this.byId("filterName").getValue();
+  const sJobTitle = this.byId("filterJobTitle").getValue();
+
+  // Filter by First Name
+  if (sName) {
+    aFilters.push(new sap.ui.model.Filter(
+      "FirstName",
+      sap.ui.model.FilterOperator.Contains,
+      sName
+    ));
+  }
+
+  // ✅ Fixed: use sJobTitle instead of wrong variable
+  if (sJobTitle) {
+    aFilters.push(new sap.ui.model.Filter(
+      "JobTitle",
+      sap.ui.model.FilterOperator.Contains,
+      sJobTitle
+    ));
+  }
+
+  const oTable = this.byId("myTable");
+  const oBinding = oTable.getBinding("items");
+  console.log(aFilters);
+
+  oBinding.filter(aFilters);
+},
         onItemPress: function (oEvent) {
           const oModel = oEvent.getParameter("listItem").getBindingContext();
           const id = oModel.getProperty("ID");

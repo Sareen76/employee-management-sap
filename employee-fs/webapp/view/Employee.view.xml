@@ -16,6 +16,17 @@
                     liveChange=".onSearch"
                     placeholder="Search by name or title"
                 />
+
+                
+<ToolbarSpacer />
+
+            <!-- Sort Buttons -->
+            <Button icon="sap-icon://sort-ascending" press=".onSortAsc"/>
+            <Button icon="sap-icon://sort-descending" press=".onSortDesc"/>
+
+            <!-- Filter Button -->
+            <Button icon="sap-icon://filter" press=".onFilterDialog"/>
+
             </Toolbar>
         </subHeader>
         <content>
