@@ -1,25 +1,93 @@
-# Getting Started
+# 🧑‍💼 Employee Management Application
+*A Full-Stack SAP CAP + SAPUI5 (Fiori) Project*
 
-Welcome to your new project.
+## 📌 1. Introduction
+This project is a full‑stack employee management application built using:
+- **SAP CAP (Cloud Application Programming Model)** for backend services
+- **SAPUI5 / Fiori** for the frontend
+- **SQLite** for local development
+- Runs inside **SAP Business Application Studio (BAS)**
+- Authenticated via **SAP Fiori Launchpad** (no custom login required)
 
-It contains these folders and files, following our recommended project layout:
+The solution demonstrates enterprise‑grade practices such as CRUD, data validation, filtering, timestamps, and service projections.
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+## 📁 2. Project Structure
+```
+project-root/
+├── db/
+│   └── schema.cds
+├── srv/
+│   ├── my-Employees-service.cds
+│   └── employee-service.js
+├── app/
+│   └── employee-ui/
+├── package.json
+└── employee.db
+```
 
+## 🗂 3. Data Model (CDS)
+### Namespace
+```
+namespace my.hr;
+```
+### Departments Entity
+```
+entity Departments {
+    key ID : UUID;
+    Name : String(60);
+    Description : String(255);
+}
+```
+### Employees Entity
+```
+entity Employees {
+    key ID : UUID;
+    FirstName : String(80);
+    LastName : String(80);
+    Email : String(255);
+    JobTitle : String(60);
+    Status : String(20);
+    HireDate : Date;
+    CreatedAt : Timestamp;
+    ModifiedAt : Timestamp;
+    Department : Association to Departments;
+}
+```
 
-## Next Steps
+## 🔗 4. OData Service Definition
+```
+using { my.hr as db } from '../db/schema';
+service EmployeeService @(path:'/employee') {
+    entity Employees  as projection on db.Employees;
+    entity Departments as projection on db.Departments;
+}
+```
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+## ⚙️ 5. Custom Logic (Node.js Handlers)
+```
+this.before(['CREATE','UPDATE'], 'Employees', req => {
+    const email = req.data.Email;
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        req.error(400, 'Invalid email format');
+    }
+});
+this.before('CREATE', 'Employees', req => {
+    req.data.CreatedAt = new Date().toISOString();
+});
+this.before('UPDATE', 'Employees', req => {
+    req.data.ModifiedAt = new Date().toISOString();
+});
+```
 
+## 🛠 6. Installation & Run Instructions
+```
+npm install
+npm start
+npm run watch-employee-ui
+```
 
-## Learn More
-
-Learn more at https://cap.cloud.sap/docs/get-started/.
+## 🔐 7. Authentication & Security
+- No login page is created in the UI
+- Authentication handled by SAP Fiori Launchpad
+- CAP receives JWT token automatically
+- Roles & access managed via FLP

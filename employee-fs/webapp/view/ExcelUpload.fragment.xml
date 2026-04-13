@@ -1,0 +1,33 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:unified="sap.ui.unified">
+
+    <Dialog
+        id="excelDialog"
+        title="Upload Excel File"
+        stretchOnPhone="true">
+
+        <VBox class="sapUiSmallMargin">
+
+            <unified:FileUploader
+                id="excelUploader"
+                fileType="xlsx,xls"
+                change=".onFileChange"
+                uploadOnChange="false"
+                useMultipart="false"
+                placeholder="Select Excel File" />
+
+        </VBox>
+
+        <beginButton>
+            <Button text="Upload" press=".onUploadExcelConfirm"/>
+        </beginButton>
+
+        <endButton>
+            <Button text="Cancel" type="Reject" press=".onDialogCancel"/>
+        </endButton>
+
+    </Dialog>
+
+</c:FragmentDefinition>

@@ -33,32 +33,32 @@
             <Table
                 id="empTable"
                 items="{path: '/Employees'}"
-                mode="SingleSelectMaster"
+                mode="MultiSelect"
                 includeItemInSelection="false"
                 growing="true"
                 itemPress=".onItemPress"
                 growingScrollToLoad="true"
             >
                 <columns>
-                    <Column>
-                        <Text text="First Name" />
-                    </Column>
-                    <Column>
-                        <Text text="Last Name" />
-                    </Column>
-                    <Column>
-                        <Text text="Email" />
-                    </Column>
-                    <Column>
-                        <Text text="Job Title" />
-                    </Column>
-                    <Column>
-                        <Text text="Status" />
-                    </Column>
-                    <Column>
-                        <Text text="Hire Date" />
-                    </Column>
-                </columns>
+    <Column>
+        <Label text="First Name" />
+    </Column>
+    <Column>
+        <Label text="Last Name" />
+    </Column>
+    <Column>
+        <Label text="Email" />
+    </Column>
+    <Column>
+        <Label text="Job Title" />
+    </Column>
+    <Column>
+        <Label text="Status" />
+    </Column>
+    <Column>
+        <Label text="Hire Date" />
+    </Column>
+</columns>
                 <items>
                     <ColumnListItem type="Active">
                         <Text text="{FirstName}" />
@@ -77,7 +77,10 @@
                 </items>
             </Table>
             <HBox id="AddEmployee" class="sapUiSmallMarginTop">
-              <Button icon="sap-icon://add" type="Emphasized" press=".onCreate" text="Add New Employee"></Button>
+              <Button icon="sap-icon://add" type="Emphasized" press=".onCreate" text="Add New Employee"/>
+              <Button icon="sap-icon://upload"  text="Upload Excel" press=".onUploadExcel"/>
+              <Button icon="sap-icon://delete" text="Batch Delete" press=".onBatchDelete" />
+              <Button icon="sap-icon://download" text="Download PDF" press=".onDownloadPDF"/>
             </HBox>
         </content>
     </Page>

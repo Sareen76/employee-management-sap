@@ -22,9 +22,9 @@
         "settings": {
           "annotations": [],
           "odataVersion": "4.01",
-"synchronizationMode": "None",
-      "updateGroupId": "$auto"
-
+          "synchronizationMode": "None",
+          "groupId": "$auto",
+          "useBatch": true
         }
       }
     }
@@ -66,12 +66,17 @@
         }
       },
       "": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
         "dataSource": "mainService",
         "preload": true,
+
         "settings": {
           "operationMode": "Server",
           "autoExpandSelect": true,
-          "earlyRequests": true
+          "earlyRequests": false,
+          "synchronizationMode": "None",
+          "groupId": "$auto",
+          "updateGroupId": "BatchDelete"
         }
       }
     },
@@ -98,23 +103,17 @@
         {
           "name": "RouteDashboard",
           "pattern": "",
-          "target": [
-            "TargetDashboard"
-          ]
+          "target": ["TargetDashboard"]
         },
         {
           "name": "RouteEmployee",
           "pattern": "RouteEmployee",
-          "target": [
-            "TargetEmployee"
-          ]
+          "target": ["TargetEmployee"]
         },
         {
           "name": "RouteEmployeeDetails",
           "pattern": "RouteEmployeeDetails({ID})",
-          "target": [
-            "TargetEmployeeDetails"
-          ]
+          "target": ["TargetEmployeeDetails"]
         }
       ],
       "targets": {

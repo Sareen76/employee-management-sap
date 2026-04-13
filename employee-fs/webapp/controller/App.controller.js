@@ -5,6 +5,7 @@ sap.ui.define([
 
   return BaseController.extend("com.capgemini.employeefs.controller.App", {
       onInit() {
+        
       }
   });
 });
