@@ -1,0 +1,43 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+
+    <VBox class="sapUiSmallMargin">
+
+        <Table
+            id="materialsTable"
+            items="{/Products}"
+            growing="true"
+            growingScrollToLoad="true">
+
+            <!-- Columns -->
+            <columns>
+                <Column><Text text="Material ID"/></Column>
+                <Column><Text text="Material Name"/></Column>
+                <Column><Text text="Quantity Per Unit"/></Column>
+                <Column><Text text="Unit Price"/></Column>
+                <Column><Text text="Stock"/></Column>
+                <Column><Text text="Discontinued"/></Column>
+            </columns>
+
+            <!-- Items -->
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{ProductID}"/>
+                        <Text text="{ProductName}"/>
+                        <Text text="{QuantityPerUnit}"/>
+                        <ObjectNumber number="{UnitPrice}" unit="USD"/>
+                        <Text text="{UnitsInStock}"/>
+                        <ObjectStatus
+                            text="{= ${Discontinued} ? 'Yes' : 'No'}"
+                            state="{= ${Discontinued} ? 'Error' : 'Success'}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+
+    </VBox>
+
+</c:FragmentDefinition>

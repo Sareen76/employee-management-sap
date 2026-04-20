@@ -336,9 +336,10 @@ sap.ui.define(
               .getRoute("RouteEmployee")
               .detachPatternMatched(this._fnOnRouteMatched, this);
             this._fnOnRouteMatched = null;
-          }
         },
       },
     );
   },
 );
+
+          }

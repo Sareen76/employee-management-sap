@@ -1,0 +1,28 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  controllerName="com.capgemini.casestudies.controller.Case03">
+
+  <Page title="Sales Orders">
+
+    <List
+      items="{/Orders}"
+      >
+
+      <items>
+        <ObjectListItem
+          title="Order #{OrderID}"
+          number="{Freight}"
+          type="Active"
+          press=".onOrderPress"
+          numberUnit="USD">
+          <attributes>
+            <ObjectAttribute text="{ShipName}"/>
+          </attributes>
+        </ObjectListItem>
+      </items>
+
+    </List>
+
+  </Page>
+</mvc:View>

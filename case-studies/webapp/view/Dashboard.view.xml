@@ -1,0 +1,33 @@
+<mvc:View
+  controllerName="com.capgemini.casestudies.controller.Dashboard"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:c="sap.ui.core">
+
+  <Page title="Case Studies Dashboard">
+    <content>
+
+      <VBox
+        items="{cases>/}"
+        class="sapUiSmallMargin">
+
+        <items>
+          <Button
+            text="{cases>title}"
+            press=".onCasePress">
+
+            <customData>
+              <c:CustomData
+                key="caseId"
+                value="{cases>caseId}" />
+            </customData>
+
+          </Button>
+        </items>
+
+      </VBox>
+
+    </content>
+  </Page>
+
+</mvc:View>

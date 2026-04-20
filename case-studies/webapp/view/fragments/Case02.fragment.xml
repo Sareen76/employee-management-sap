@@ -1,0 +1,45 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+
+    <VBox class="sapUiSmallMargin" width="100%">
+
+        <!-- Search Field -->
+        <SearchField
+            placeholder="Search Products..."
+            liveChange=".onProductSearch"
+            width="100%" />
+
+        <!-- Product Table -->
+        <Table
+            id="productsTable"
+            items="{/Products}"
+            growing="true"
+            growingScrollToLoad="true"
+            class="sapUiSmallMarginTop">
+
+            <columns>
+                <Column><Text text="Product ID"/></Column>
+                <Column><Text text="Product Name"/></Column>
+                <Column><Text text="Quantity Per Unit"/></Column>
+                <Column><Text text="Unit Price"/></Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{ProductID}"/>
+                        <Text text="{ProductName}"/>
+                        <Text text="{QuantityPerUnit}"/>
+                        <ObjectNumber
+                            number="{UnitPrice}"
+                            unit="USD"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+
+    </VBox>
+
+</c:FragmentDefinition>
